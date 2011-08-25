@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require_relative './bootstrap'
+require File.join(File.dirname(__FILE__), 'bootstrap.rb')
 
 pry

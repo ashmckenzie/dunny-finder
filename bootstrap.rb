@@ -1,4 +1,5 @@
+require 'rubygems'
 require 'bundler/setup'
 Bundler.require(:default)
 
-require_relative './lib/database'
+require File.join(File.dirname(__FILE__), 'lib', 'database.rb')

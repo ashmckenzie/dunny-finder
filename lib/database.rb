@@ -1,6 +1,6 @@
 require 'yaml'
 
-require_relative '../models/models.rb'
+require File.join(File.dirname(__FILE__), '..', 'models', 'models.rb')
 
 CONFIG_FILE = File.expand_path(File.join('config.yaml'))
 

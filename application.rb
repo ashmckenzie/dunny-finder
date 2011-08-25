@@ -1,6 +1,6 @@
 require 'json'
 require 'awesome_print'
-require_relative './bootstrap'
+require File.join(File.dirname(__FILE__), 'bootstrap.rb') 
 
 get '/search/postcode/:postcode' do
   content_type :json

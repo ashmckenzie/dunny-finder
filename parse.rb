@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
+require File.join(File.dirname(__FILE__), 'bootstrap.rb') 
 require 'yaml'
-require_relative './bootstrap'
 
 data = './data/ToiletmapExport.xml'
 
@@ -21,7 +21,7 @@ doc.xpath('//ToiletDetails').each do |t|
     :address => address,
     :latitude => t.attribute('Latitude').text,
     :longitude => t.attribute('Longitude').text,
-    :url => t.attribute('ToiletURL').text,
+    :url => t.attribute('ToiletURL').text
   )
 
   town = Town.first_or_create(
