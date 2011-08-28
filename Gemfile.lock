@@ -146,7 +146,6 @@ DEPENDENCIES
   bson_ext
   datamapper
   dm-mysql-adapter
-  fastercsv
   json
   mongo_mapper
   nokogiri
