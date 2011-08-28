@@ -1,18 +1,21 @@
 class Town
-  include MongoMapper::Document
-  key :name,    String
-  key :state, String
-  key :postcode, String
-  many :toilets
+  include DataMapper::Resource
+  has n, :toilets
+  property :id, Serial
+  property :name, String, :length => 255
+  property :state, String
+  property :postcode, String
+  timestamps :at
 end
 
 class Toilet
-  include MongoMapper::Document
-  key :name, String
-  key :address, String
-  key :latitude, Float
-  key :longitude, Float
-  key :url, String
-  timestamps!
+  include DataMapper::Resource
   belongs_to :town
+  property :id, Serial
+  property :name, String, :length => 255
+  property :address, String, :length => 255
+  property :latitude, Float
+  property :longitude, Float
+  property :url, String, :length => 255
+  timestamps :at
 end

@@ -1,22 +1,24 @@
 #!/usr/bin/env ruby
 
 require File.join(File.dirname(__FILE__), 'bootstrap.rb') 
-require 'yaml'
 
-data = './data/ToiletmapExport.xml'
+DataMapper.finalize
+DataMapper.auto_upgrade!
 
-doc = Nokogiri::XML(File.open(data))
+doc = Nokogiri::XML(File.open(LOCAL_TOILET_XML_LOCATION))
 doc.remove_namespaces!
-
-Toilet.destroy_all
-Town.destroy_all
 
 doc.xpath('//ToiletDetails').each do |t|
 
   toilet_name = t.xpath('Name').text
   address = t.xpath('Address1').text
 
-  toilet = Toilet.first_or_new(
+  toilet = Toilet.first_or_create(
+    {
+      :name => toilet_name,
+      :latitude => t.attribute('Latitude').text,
+      :longitude => t.attribute('Longitude').text
+    },
     :name => toilet_name,
     :address => address,
     :latitude => t.attribute('Latitude').text,
@@ -31,5 +33,5 @@ doc.xpath('//ToiletDetails').each do |t|
   )
 
   toilet.town = town
-  toilet.save!
+  toilet.save or ap toilet.errors
 end
