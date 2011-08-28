@@ -8,7 +8,12 @@ DataMapper.auto_upgrade!
 doc = Nokogiri::XML(File.open(LOCAL_TOILET_XML_LOCATION))
 doc.remove_namespaces!
 
-doc.xpath('//ToiletDetails').each do |t|
+current = 0
+toilets = doc.xpath('//ToiletDetails')
+
+toilets.each do |t|
+  percent = (current * 100) / toilets.size
+  $log.info "Parsing #{percent}%%\r", false
 
   toilet_name = t.xpath('Name').text
   address = t.xpath('Address1').text
@@ -16,8 +21,6 @@ doc.xpath('//ToiletDetails').each do |t|
   toilet = Toilet.first_or_create(
     {
       :name => toilet_name,
-      :latitude => t.attribute('Latitude').text,
-      :longitude => t.attribute('Longitude').text
     },
     :name => toilet_name,
     :address => address,
@@ -34,4 +37,8 @@ doc.xpath('//ToiletDetails').each do |t|
 
   toilet.town = town
   toilet.save or ap toilet.errors
+
+  current += 1
 end
+
+$log.info "Parsing COMPLETE"
