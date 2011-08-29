@@ -1,7 +1,9 @@
 require 'dm-timestamps'
 require 'dm-migrations'
 
-require File.expand_path(File.join(File.dirname(__FILE__), 'models', 'models.rb'))
+Dir[File.join(File.dirname(__FILE__), 'models', '*.rb')].each do |file|
+  require file
+end
 
 CONFIG_FILE = File.expand_path(File.join(File.dirname(__FILE__), '..', 'config', 'config.yaml'))
 
