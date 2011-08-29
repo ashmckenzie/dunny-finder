@@ -85,6 +85,7 @@ GEM
       activemodel (~> 3.0)
       activesupport (~> 3.0)
       plucky (~> 0.3.8)
+    multi_json (1.0.3)
     nokogiri (1.5.0)
     padrino (0.10.1)
       padrino-admin (= 0.10.1)
@@ -124,6 +125,11 @@ GEM
       ruby_parser (>= 2.0.5)
       slop (~> 1.9.0)
     rack (1.3.2)
+    representative (0.3.6)
+      activesupport (>= 2.2.2)
+      builder (>= 2.1.2)
+      i18n (>= 0.4.1)
+      multi_json (>= 0.0.5)
     ruby_parser (2.2.0)
       sexp_processor (~> 3.0)
     rubyzip (0.9.4)
@@ -157,5 +163,6 @@ DEPENDENCIES
   padrino
   progressbar
   pry
+  representative
   rubyzip
   thor

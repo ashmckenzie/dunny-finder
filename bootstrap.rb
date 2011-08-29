@@ -4,6 +4,8 @@ Bundler.require(:default)
 
 require 'pathname'
 require 'yaml'
+require 'json'
+require 'representative/json'
 
 require File.join(File.dirname(__FILE__), 'lib', 'utils')
 require File.join(File.dirname(__FILE__), 'lib', 'gw_logger')
