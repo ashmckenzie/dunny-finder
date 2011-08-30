@@ -21,6 +21,11 @@ namespace :deploy do
   before 'deploy:symlink' do
     run "cd #{deploy_to}/current ; bundle install"
     run "mkdir -p #{shared_path}/config"
+    [ "cache/rack/meta", "cache/rack/body" ].each do |dir|
+      run "mkdir -p #{shared_path}/#{dir}"
+    end
+    run "ln -nfs #{shared_path}/cache #{release_path}/cache"
+        
     put File.read(Paths.database_file), "#{shared_path}/config/database.yaml"
     run "ln -nfs #{shared_path}/config/database.yaml #{release_path}/config/database.yaml"
   end
