@@ -7,5 +7,5 @@ end
 
 get '/search/town/:town' do
   content_type :json
-  Toilet.json_rep Town.all(:name => /#{params[:town]}/i).toilets
+  Toilet.json_rep Town.all(:name => /#{params[:town]}/i).toilets.sort_by { |t| [ t.town.name, t.name ] }
 end
