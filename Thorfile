@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), 'bootstrap.rb')
+require File.join(File.dirname(__FILE__), 'lib', 'bootstrap.rb')
 
 class DF < Thor
   desc "parse", "Parse Toilet XML file"
