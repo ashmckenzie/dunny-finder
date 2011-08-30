@@ -14,9 +14,12 @@ require "rvm/capistrano"                  # Load RVM's capistrano plugin.
 
 namespace :deploy do
 
+  before 'deploy:symlink' do
+    run "cd #{deploy_to}/current ; bundle install"
+  end
+
   desc 'Restart'
   task :restart do
-    run "cd #{deploy_to}/current ; bundle install"
     run "touch #{deploy_to}/current/tmp/restart.txt"  
   end
 
