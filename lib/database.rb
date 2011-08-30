@@ -5,12 +5,10 @@ Dir[File.join(File.dirname(__FILE__), 'models', '*.rb')].each do |file|
   require file
 end
 
-CONFIG_FILE = File.expand_path(File.join(File.dirname(__FILE__), '..', 'config', 'config.yaml'))
+database = YAML::load(File.read(DATABASE_FILE))
 
-config = YAML::load(File.read(CONFIG_FILE))
-
-DataMapper::Logger.new($stdout, :debug)
-DataMapper.setup(:default, "mysql://localhost/#{config['database']}")
+#DataMapper::Logger.new($stdout, :debug)
+DataMapper.setup(:default, "mysql://#{database['username']}:#{database['password']}@localhost/#{database['name']}")
 
 DataMapper.finalize
 DataMapper.auto_upgrade!

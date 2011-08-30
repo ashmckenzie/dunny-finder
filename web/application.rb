@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), 'bootstrap.rb') 
+require File.join(File.dirname(__FILE__), '..', 'lib', 'bootstrap.rb') 
 
 get '/search/postcode/:postcode' do
   content_type :json

@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'sinatra'
-require './application'
+require File.expand_path(File.join(File.dirname(__FILE__), 'web', 'application'))
 
 set :run, false
 
