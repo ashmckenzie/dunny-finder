@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), '..', 'lib', 'bootstrap.rb')
+require File.join(File.dirname(__FILE__), '..', 'lib', 'paths.rb')
 
 default_run_options[:pty] = true
 
