@@ -15,17 +15,15 @@ class Toilet
 
   def self.json_rep toilets
     json = Representative::Json.new do |r|
-      r.list_of :toilets, toilets do
+      r.list_of :toilets, toilets do |t|
         r.element :name
         r.element :address
+        r.element :suburb, t.town.name
+        r.element :state, t.town.state
+        r.element :postcode, t.town.postcode
         r.element :latitude
         r.element :longitude
         r.element :map_url
-        r.element :town do
-          r.element :name
-          r.element :state
-          r.element :postcode
-        end
       end
     end
     json.to_s

@@ -9,6 +9,7 @@ CONFIG_FILE = File.expand_path(File.join(File.dirname(__FILE__), '..', 'config',
 
 config = YAML::load(File.read(CONFIG_FILE))
 
+DataMapper::Logger.new($stdout, :debug)
 DataMapper.setup(:default, "mysql://localhost/#{config['database']}")
 
 DataMapper.finalize
