@@ -3,3 +3,4 @@ tmp/
 config/database.yaml
 cache/rack/body/*
 cache/rack/meta/*
+.idea
