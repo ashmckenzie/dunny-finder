@@ -19,7 +19,7 @@ require "rvm/capistrano"
 namespace :deploy do
 
   before 'deploy:symlink' do
-    run "cd #{deploy_to}/current ; bundle install"
+    run "cd #{release_path} ; bundle install"
     run "mkdir -p #{shared_path}/config"
     [ "cache/rack/meta", "cache/rack/body" ].each do |dir|
       run "mkdir -p #{shared_path}/#{dir}"
