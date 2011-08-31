@@ -7,10 +7,10 @@ require 'rack/cache'
   FileUtils.mkdir_p(dir) unless File.exists?(dir)
 end
 
-use Rack::Cache,
-  :verbose     => true,
-  :metastore   => "file:#{File.dirname(__FILE__)}/cache/rack/meta",
-  :entitystore => "file:#{File.dirname(__FILE__)}/cache/rack/body"
+#use Rack::Cache,
+#  :verbose     => true,
+#  :metastore   => "file:#{File.dirname(__FILE__)}/cache/rack/meta",
+#  :entitystore => "file:#{File.dirname(__FILE__)}/cache/rack/body"
 
 require File.expand_path(File.join(File.dirname(__FILE__), 'web', 'application'))
 

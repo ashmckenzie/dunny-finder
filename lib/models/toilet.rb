@@ -13,6 +13,10 @@ class Toilet
     "http://maps.google.com/maps?q=#{latitude},#{longitude}"
   end
 
+  def town_name
+    town.name
+  end
+
   def self.json_rep toilets
     json = Representative::Json.new do |r|
       r.list_of :toilets, toilets do |t|
