@@ -14,7 +14,7 @@ end
 
 get '/search/query/:query' do
   content_type :json
-  #cache_control :public, :max_age => 36000
+  cache_control :public, :max_age => 36000
   results = $toilets.search(params[:query], 100).to_hash[:allocations].collect { |x| x[4] }.flatten
   Toilet.json_rep Toilet.all(:id => results)
 end
