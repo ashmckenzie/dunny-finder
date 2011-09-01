@@ -12,7 +12,7 @@ use Rack::Cache,
   :metastore   => "file:#{File.dirname(__FILE__)}/cache/rack/meta",
   :entitystore => "file:#{File.dirname(__FILE__)}/cache/rack/body"
 
-require File.expand_path(File.join(File.dirname(__FILE__), 'web', 'application'))
+require File.expand_path(File.join(File.dirname(__FILE__), 'application'))
 
 set :run, false
 
